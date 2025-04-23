@@ -1,6 +1,6 @@
 # 🎛️ RaveRadar
 
-![RaveRadar logo](raveradar_logo.png)
+![RaveRadar logo](raveradar_logo.jpg)
 
 **RaveRadar** is an open-source tool designed to **detect, collect, and track songs played in YouTube videos**, with a focus on electronic music scenes like **Hard Techno**, **Rave**, and **Underground** genres. Whether you're scouting new DJ sets, tracking trends, or archiving your favorite drops — RaveRadar keeps your finger on the pulse of the beat.
 
