@@ -1,5 +1,7 @@
 # 🎛️ RaveRadar
 
+![RaveRadar logo](raveradar_logo.png)
+
 **RaveRadar** is an open-source tool designed to **detect, collect, and track songs played in YouTube videos**, with a focus on electronic music scenes like **Hard Techno**, **Rave**, and **Underground** genres. Whether you're scouting new DJ sets, tracking trends, or archiving your favorite drops — RaveRadar keeps your finger on the pulse of the beat.
 
 ---
@@ -19,6 +21,10 @@
    Monitor evolving trends in the Hard Techno & Rave scene.
 - ⚡ **CLI & API Ready**  
    Use from terminal or integrate into your own workflows.
+- 🎵 **Playlist Export**  
+   Export detected tracks to Spotify or YouTube Music playlists.
+- ✏️ **Community Corrections**  
+   Submit and manage track corrections with approval workflow.
 
 ---
 
@@ -28,6 +34,8 @@
 - Build a public archive of rave/techno tracklists.
 - Detect unknown tracks via audio recognition.
 - Follow genre-specific trends over time.
+- Create playlists on your favorite music platforms.
+- Collaborate with the community to improve track accuracy.
 
 ---
 
@@ -42,22 +50,33 @@ pip install -r requirements.txt
 
 ## ⚡ Quick Start
 ```bash
+# Basic usage
 python raveradar.py https://www.youtube.com/watch?v=VIDEO_ID
+
+# Export to Spotify
+python raveradar.py https://www.youtube.com/watch?v=VIDEO_ID --export spotify
+
+# Export to YouTube Music
+python raveradar.py https://www.youtube.com/watch?v=VIDEO_ID --export youtube
 ```
+
 - RaveRadar will:
   1. Parse video info.
   2. Attempt to extract or detect songs.
   3. Save results to `/tracks/` folder.
   4. Optionally push updates to your GitHub collection.
+  5. Export tracks to your preferred music platform (if requested).
 
 ---
 
 ## ⚙️ Configuration
 Edit `config.yaml` for:
-- API keys (e.g., ACRCloud, AudD, Shazam)
+- API keys (e.g., ACRCloud, AudD, Shazam, Spotify, YouTube)
 - GitHub repo settings
 - Genre filters
 - Update frequency
+- Playlist export settings
+- Community corrections settings
 
 ---
 
@@ -68,19 +87,71 @@ Edit `config.yaml` for:
 ```
 ```markdown
 # DJ XYZ - Live Rave Set [23.04.2024]
+
+## Video Details
+- **Artist/DJ:** DJ XYZ
+- **Date:** 2024-04-23
+- **Duration:** 3600 seconds
+- **Views:** 1000
+- **Rating:** 4.5
+- **YouTube ID:** VIDEO_ID
+- **URL:** https://youtube.com/watch?v=VIDEO_ID
+
+## Tracklist
 1. Klangkuenstler – "Engels Gesang"
+   - Source: acrcloud
 2. Parallx – "Red Clouds"
-3. SNTS – "Chapter VI"
+   - Source: audd
 ...
+
+## Corrections
+- ✅ Track 3: Wrong Artist - Wrong Title → Correct Artist - Correct Title
+  - Submitted by: username
+  - Date: 2024-04-23T12:00:00
+```
+
+---
+
+## 🎵 Playlist Export
+RaveRadar can export detected tracks to:
+- **Spotify**: Create playlists with automatic track matching
+- **YouTube Music**: Build playlists with video links
+
+Requirements:
+- Spotify Developer account and API credentials
+- YouTube API credentials
+- OAuth setup for both platforms
+
+---
+
+## ✏️ Community Corrections
+Submit and manage track corrections:
+1. Submit corrections for inaccurate track info
+2. Corrections are stored in `/corrections/` directory
+3. Approve/reject corrections through the API
+4. Approved corrections are automatically applied to tracklists
+
+Correction format:
+```json
+{
+  "track_number": 1,
+  "original": {"artist": "Wrong Artist", "title": "Wrong Title"},
+  "corrected": {"artist": "Correct Artist", "title": "Correct Title"},
+  "submitter": "username",
+  "timestamp": "2024-04-23T12:00:00",
+  "status": "pending"
+}
 ```
 
 ---
 
 ## 🛠️ Roadmap
+- [x] Playlist export (Spotify, YouTube Music)
+- [x] Community-submitted corrections
 - [ ] Web interface for easier tracking
-- [ ] Playlist export (Spotify, YouTube Music)
-- [ ] Community-submitted corrections
 - [ ] Advanced trend analytics
+- [ ] Batch processing for multiple videos
+- [ ] Discord bot integration
 
 ---
 
